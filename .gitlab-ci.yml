@@ -1,6 +1,7 @@
 stages:
   - build
   - codestyle
+  - integration_tests
 
 build:
   stage: build
@@ -24,3 +25,13 @@ codestyle_check:
     - make style_check
     - cd ../grep/
     - make style_check
+
+integration_tests:
+  stage: integration_tests
+  script:
+    - cd src/cat/cat_tests/
+    - bash test_func_cat.sh
+    - bash test_leak_cat.sh
+    - cd ../../grep/grep_tests/
+    - bash test_func_grep.sh
+    - bash test_leak_grep.sh
