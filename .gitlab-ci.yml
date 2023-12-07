@@ -1,15 +1,26 @@
 stages:
   - build
+  - codestyle
 
 build:
   stage: build
   script:
-    - cd src/cat
+    - cd src/cat/
     - make
-    - cd ../grep
+    - cd ../grep/
     - make
   artifacts:
     paths:
       - src/cat/s21_cat
       - src/grep/s21_grep
     expire_in: 30 days
+
+codestyle_check:
+  stage: codestyle
+  script:
+    - apt-get update -qy
+    - apt-get install -y clang-format
+    - cd src/cat/
+    - make style_check
+    - cd ../grep/
+    - make style_check

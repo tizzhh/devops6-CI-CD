@@ -29,3 +29,6 @@ build:
       - src/artifacts/
     expire_in: 30 days
 ```
+
+## Part 3. Тест кодстайла
+- Написать этап для CI, который запускает скрипт кодстайла (clang-format):
