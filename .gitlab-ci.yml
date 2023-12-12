@@ -2,6 +2,7 @@ stages:
   - build
   - codestyle
   - integration_tests
+  - deploy
 
 build:
   stage: build
@@ -19,8 +20,6 @@ build:
 codestyle_check:
   stage: codestyle
   script:
-    - apt-get update -qy
-    - apt-get install -y clang-format
     - cd src/cat/
     - make style_check
     - cd ../grep/
@@ -35,3 +34,9 @@ integration_tests:
     - cd ../../grep/grep_tests/
     - bash test_func_grep.sh
     - bash test_leak_grep.sh
+
+deploy:
+  stage: deploy
+  script:
+    - bash deploy.sh
+  when: manual
