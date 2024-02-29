@@ -1,3 +1,5 @@
+# Basic CI/CD
+
 ### Part 1. Настройка **gitlab-runner**
 
 - Поднята виртуальная машину *Ubuntu Server 20.04 LTS*
